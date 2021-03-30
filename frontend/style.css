@@ -1,0 +1,114 @@
+
+
+h1{text-align: center;}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+
+html {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  background: #100a1c;
+  background-image:
+    radial-gradient(50% 30% ellipse at center top, #201e40 0%, rgba(0,0,0,0) 100%),
+    radial-gradient(60% 50% ellipse at center bottom, #261226 0%, #100a1c 100%);
+  background-attachment: fixed;
+  color: #6cacc5;
+}
+
+body {
+  color: #6cacc5;
+  font: 300 18px/1.6 "Source Sans Pro",sans-serif;
+  
+ 
+  
+  
+}
+
+.panel {
+  margin-left: 270px;
+  
+  padding: 15px 25px;
+  width: 1200%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+
+
+.function {
+  color: #888;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+
+
+@media (min-width: 900px){
+  .panel {
+    flex-direction: row;
+  }
+  .main {
+    border-bottom: none;
+    border-right: 1px solid #e1f1ff;
+    padding: 25px 50px;
+  }
+  .main:last-child {
+    border-right: none;
+  }
+}
+.buttons {
+  margin-top:16px;
+  margin-bottom:16px;
+	
+	
+  border: none;
+  background: #404040;
+  color: #ffffff !important;
+  font-weight: 100;
+  padding: 20px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  }
+  .buttons:hover {
+      color: #404040 !important;
+      font-weight: 700 !important;
+      letter-spacing: 3px;
+      background: none;
+      -webkit-box-shadow: 2px 5px 40px -10px rgba(0,0,0,0.57);
+      -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+      transition: all 0.3s ease 0s;
+      }
+      .label{
+        margin-top:16px;
+        font-size: 12px;
+        margin-bottom:16px;
+      }
+      .viewer {
+        margin-top:16px;
+  margin-bottom:16px;
+  color: #c97874;
+  
+  line-height: 3em;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+ 
+}
+.error{
+  text-align: center;
+}

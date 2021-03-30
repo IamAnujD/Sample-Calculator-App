@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Program</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1> Practice Program</h1>
+    <div class="panel">
+
+        <div class="main">
+            
+            <h2 class="function">Find IP Address</h2>
+            <button class="buttons"
+        type="button" id="ip" onclick="findIP()" >
+    Show IP Address!
+</button>
+<div id="viewip" class="viewer"></div>
+        </div>
+
+        <div class="main">
+            
+            <h2 class="function">Find LCM </h2>
+            <label class="label" for="num1">Enter First Number:   </label><input type="text" id="num1"><br>
+            <label class="label" for="num2">Enter Second Number: </label><input type="text" id="num2"><br>
+            <button class="buttons"
+                type="button" id="lcm" onclick="findLCM()">
+            Show LCM!
+        </button></td>
+
+        <div id="viewlcm" class="viewer"></div>
+           
+        </div>
+
+        <div class="main">
+            
+            <h2 class="function">Sort Numbers</h2>
+            <label class="label" for="arrayinput">Enter Numbers:</label><br>
+
+<textarea name="arrayinput" id="arrayinput" cols="0" rows="10"></textarea>
+            <button class="buttons"
+                type="button" id="arrays" onclick="sortArray()">
+            Sort Numbers!
+        </button></td>
+        <br>
+        <div id="viewarray" class="viewer"></div>
+           
+        </div>
+
+    </div>
+    <div id="error" class="error"></div>
+           
+</div>
+
+</body>
+<script >
+    
+   
+   function sortArray(){
+    
+    var textAreaElement = document.getElementById('arrayinput');
+        var namesArray = textAreaElement.value.trim().split('\n');
+    
+        for(i=0;i<namesArray.length;i++){
+
+            if(containOnlyDigit(namesArray[i])!==true) {
+    document.getElementById("error").innerHTML = "Input Error! Only Integer allowed ";return;}
+    if(hasWhiteSpace(namesArray[i])===true){
+  document.getElementById("error").innerHTML = "Remove White Spaces from Input!";return;}
+            
+        }
+     
+   
+
+   let request = new XMLHttpRequest();var temp = "http://localhost:8080/sortArray?a=";
+   var i; var str="";
+   for(i=0;i<namesArray.length;i++){
+       if(i===(namesArray.length-1) )var str = namesArray[i];
+      else  var str = namesArray[i].concat(",");
+       temp = temp.concat(str);
+temp=temp.concat()
+   }
+    request.open("GET",temp);
+    request.send();
+    request.onload=() =>{console.log(request);
+    if(request.status===200){
+        console.log(JSON.parse(request.response));
+        var array=[];
+        array=Object.values(JSON.parse(request.response));
+        console.log(array);
+        document.getElementById("viewarray").innerHTML = array[0];
+       
+    }
+    }
+       
+   }
+   
+   
+   
+   function findLCM(){var number1 = document.getElementById("num1").value; 
+    var number2 = document.getElementById("num2").value;
+  if(hasWhiteSpace(number1)===true){
+  document.getElementById("error").innerHTML = "Remove White Spaces from first Number!";return;}
+  if(hasWhiteSpace(number2)===true){
+  document.getElementById("error").innerHTML = "NRemove White Spaces from Second Number!";return;}
+   
+    if(containOnlyDigit(number1)!==true) {
+    document.getElementById("error").innerHTML = "Input Error! Number 1 isn't a valid Integer!";return;}
+    if (containOnlyDigit(number2)!==true) {
+    document.getElementById("error").innerHTML = "Input Error! Number 2 isn't a valid Integer!";return;}
+    var int1 = parseInt(number1);
+    var int2 = parseInt(number2);
+    var str1 = "a=".concat(number1);
+    var str2= "&b=".concat(number2);
+    var str3= str1.concat(str2); var temp = "http://localhost:8080/findlcm?";
+    var final = temp.concat(str3);
+
+    let request = new XMLHttpRequest();
+    request.open("GET",final);
+    request.send();
+    request.onload=() =>{console.log(request);
+    if(request.status===200){
+        console.log(JSON.parse(request.response));
+        var array=[];
+        array=Object.values(JSON.parse(request.response));
+        console.log(array);
+        document.getElementById("viewlcm").innerHTML = array[0];
+       
+    }
+    }
+}
+function findIP(){
+    
+    let request = new XMLHttpRequest();
+    request.open("GET","http://localhost:8080/findIP");
+    request.send();
+    request.onload=() =>{console.log(request);
+    if(request.status===200){
+        console.log(JSON.parse(request.response));
+        var array=[];
+        array=Object.values(JSON.parse(request.response));
+        console.log(array);
+        document.getElementById("viewip").innerHTML = array[0];
+       
+    }
+    }
+  
+}
+
+function hasWhiteSpace(s) {
+  return /\s/g.test(s);
+}
+function containOnlyDigit(s){ return /^\d+$/.test(s);}
+   </script>
+
+</html>
